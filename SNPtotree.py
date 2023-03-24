@@ -1,7 +1,4 @@
-#!/mnt/ngs/scratch_areas/nxd426/python3.6_env/bin/python
-
-#SNPtotree: sorting haploid SNPs from sequencing data into a phylogenetic tree
-
+print("STARTING SNPTOTREE")
 import argparse
 import time
 import shutil
