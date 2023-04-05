@@ -39,7 +39,7 @@ optional:
 The user is required to provide the path to the input file in the _.csv_ format. The input file contains the ancestral **A** or derived **D** allelic state or missing information **X** for each **_polymorphic variant_** in a tab-separated format. The rows present variants, the columns the individuals.
 The header row should present the individuals' labels and the first (index) column the variant names.
 
-![Input file format](C:\Users\nxd426\Downloads\inputfile_snptotree.png)
+![Input file format](C:\Users\nxd426\Documents\GitHub\SNPtotree\inputfile_snptotree.png)
 
 #### c) Output file(s)
 
