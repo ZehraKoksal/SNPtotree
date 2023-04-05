@@ -28,16 +28,15 @@ The software is simple and requires only one input file and creates one main out
 ### 4) Algorithm and Commands
 SNPtotree uses a simple algorithm, which conducts pairwise comparisons of the allelic states of all variants. These are then combined to the final hierarchical tree order.
 
+The required information in the command line are the paths to the _input_ and _main output_ files:
+
 ```
 python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ 
 ```
 optional:
 ```
--contradictory_variants /path_to_input_data_folder/ 
--ambiguous_variants /path_to_input_data_folder/
--metadata_individuals /path_to_input_data_folder/  
+python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradictory_variants /path_to_input_data_folder/ -ambiguous_variants /path_to_input_data_folder/ -metadata_individuals /path_to_input_data_folder/
 ```
-The required information in the command line are the paths to the _input_ and _main output_ files:
 
 
 #### a) Input file
