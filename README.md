@@ -7,9 +7,14 @@ University of Copenhagen, Denmark
 
 ²DNA Diagnostic Laboratory (LDD), State University of Rio de Janeiro (UERJ), Brazil
 
-## 1) About SNPtotree
+### 1) About SNPtotree
+SNPtotree determines the hierarchical order of biallelic haploid variants - variants on haploid markers, which do not undergo recombination. Even for sequencing data with high percentage of missing information, SNPtotree reliably generates a phylogenetic tree without error-prone manual sorting. This is unique to SNPtotree, when compared with alternative methods, like maximum likelihood (ML) based approaches.
 
-## 2) Installation
+SNPtotree allows the creation of phylogenetic trees of variants based on genetically similar and dissimilar sequences with low or high amount of missing data. 
+
+The algorithm is conducting comparisons between the allelic states (ancestral "A" or derived "D") of all variant pairs to infer their relationships and generate a phylogenetic tree. The tree is more accurate and complete, the more accurate and complete the input sequencing data. Variants that predict contradictory pairwise relationships or ambiguous positions in the tree are ignored
+
+### 2) Installation
 Operating system: linux
 
 Type in the shell (linux):
@@ -17,27 +22,23 @@ git clone https://github.com/ZehraKoksal/SNPtotree.git
 cd SNPtotree/
 SNPtotree.py -h
 
-## 3) Running SNPtotree
+### 3) Running SNPtotree
 The software is simple and requires only one input file and creates one main output file, the phylogenetic tree. Three additional output files are optional and give background information on your genetic variants.
 
-### a) Input file
+#### a) Input file
 
-### b) Output file(s)
+#### b) Output file(s)
 
-### c) Command
+#### c) Command
 
-## 4) Additional information and Contact
+### 4) Additional information and Contact
 More information on the software are available in our publication: XX (link)
 
 For reporting bugs, comments or questions, you are welcome to contact zehra.koksal@sund.ku.dk.
 
-## 5) Referencing
+### 5) Referencing
 
 Please cite:
 
 
-
-
-
-## Installation
 
