@@ -16,7 +16,7 @@ SNPtotree allows the creation of phylogenetic trees of variants based on genetic
 Operating system: linux
 
 Type in the shell (linux):
-```ruby
+```
 git clone https://github.com/ZehraKoksal/SNPtotree.git
 cd SNPtotree/
 SNPtotree.py -h
@@ -27,7 +27,7 @@ The software is simple and requires only one input file and creates one main out
 
 #### a) Command
 ```
-python SNPtotree.py /path_to_input_data.csv/ /path_to_output_folder/ 
+python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ 
 ```
 optional:
 ```
@@ -35,7 +35,11 @@ optional:
 -ambiguous_ variants /path_to_input_data_folder/
 -metadata_ individuals /path_to_input_data_folder/  
 ```
-#### b) Input file (/path_to_input_data.csv/)
+#### b) Input file
+The user is required to provide the path to the input file in the _.csv_ format. The input file contains the ancestral **A** or derived **D** allelic state or missing information **X** for each **_polymorphic variant_** in a tab-separated format. The rows present variants, the columns the individuals.
+The header row should present the individuals' labels and the first (index) column the variant names.
+
+![Input file format](C:\Users\nxd426\Downloads\inputfile_snptotree.png)
 
 #### c) Output file(s)
 
