@@ -10,7 +10,7 @@ University of Copenhagen, Denmark
 ### 1) About SNPtotree
 SNPtotree determines the hierarchical order of biallelic haploid variants - variants on haploid markers, which do not undergo recombination. Even for sequencing data with high percentage of missing information, SNPtotree reliably generates a phylogenetic tree without error-prone manual sorting. This is unique to SNPtotree, when compared with alternative methods, like maximum likelihood (ML) based approaches.
 
-SNPtotree allows the creation of phylogenetic trees of variants based on genetically similar and dissimilar sequences with low or high amount of missing data. The algorithm conducts comparisons between the allelic states (ancestral "A" or derived "D") of all variant pairs to infer their relationships and generate a phylogenetic tree. The tree is more accurate and complete, the more accurate and complete the input sequencing data. Variants that predict contradictory pairwise relationships or ambiguous positions in the tree are ignored
+SNPtotree allows the creation of phylogenetic trees of variants based on genetically similar and dissimilar sequences with low or high amount of missing data. The algorithm conducts comparisons between the allelic states (ancestral "A" or derived "D") of all variant pairs to infer their relationships and generate a phylogenetic tree. The tree is more accurate and complete, the more accurate and complete the input sequencing data. Variants that predict contradictory pairwise relationships or ambiguous positions in the tree are ignored.
 
 ### 2) Installation
 Operating system: linux
@@ -41,14 +41,12 @@ The header row should present the individuals' labels and the first (index) colu
 
 <img src="/Images/inputfile_snptotree.png" alt="Input file style" width="580"/>
 
-The allelic states ancestral and derived of the most used model organisms are reported in public repositories.
+The allelic states "ancestral" and "derived" of the most used model organisms are reported in public repositories. For novel SNPs or for not well investigated organisms without already reported relevant SNP information, the ancestral and derived allelic states have to be identified by the user. The ancestral allele is found in a common ancestor of the group of analysed individuals. Thus, it is helpful to conduct sequence alignment to a common ancestor rather than an arbitrarily selected reference genome, e.g. GRCh38 for humans.
 
-Human Y-chromosome: [Y-DNA Haplogroup Tree 2019-2020](https://isogg.org/tree/)
-Human mt DNA:
 
 #### c) Output file(s)
-
-
+SNPtotree generates the phylogenetic tree in a tab-separated file. This tree is to be read from left to right.
+<img src="/Images/output_phyltree.png" alt="Input file style" width="580"/>
 
 ### 4) Additional information and Contact
 More information on the software are available in our publication: XX (link)
