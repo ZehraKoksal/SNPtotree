@@ -25,7 +25,9 @@ SNPtotree.py -h
 ### 3) Running SNPtotree
 The software is simple and requires only one input file and creates one main output file, the phylogenetic tree. Three additional output files are optional and give background information on your genetic variants.
 
-#### a) Commands and Algorithm
+### 4) Algorithm and Commands
+SNPtotree uses a simple algorithm, which conducts pairwise comparisons of the allelic states of all variants. These are then combined to the final hierarchical tree order.
+
 ```
 python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ 
 ```
@@ -35,18 +37,10 @@ optional:
 -ambiguous_variants /path_to_input_data_folder/
 -metadata_individuals /path_to_input_data_folder/  
 ```
-SNPtotree uses a simple algorithm, which conducts pairwise comparisons of the allelic states of all variants. In certain cases - including sequencing errors, recurrent mutations or backmutations - contradictory pairwise hierarchical relationships are predicted. These variants are ignored for the tree generation, but saved as "contradictory variants". These variants can be saved in a folder, determined using:
-```
--contradictory_variants /path_to_input_data_folder/ 
-```
+The required information in the command line are the paths to the _input_ and _main output_ files:
 
-Based on the pairwise relationships, the final hierarchical order of the variants is established.
-For some variants, a clear position within the tree is not possible. These variants have ambiguous positions in the tree and can be saved in a folder using:
-```
--ambiguous_variants /path_to_input_data_folder/
-```
 
-#### b) Input file
+#### a) Input file
 The user is required to provide the path to the input file in the _.csv_ format. The input file contains the ancestral **A** or derived **D** allelic state or missing information **X** for each **_polymorphic variant_** in a tab-separated format. The rows present variants, the columns the individuals.
 The header row should present the individuals' labels and the first (index) column the variant names.
 
@@ -55,14 +49,15 @@ The header row should present the individuals' labels and the first (index) colu
 The allelic states "ancestral" and "derived" of the most used model organisms are reported in public repositories. For novel SNPs or for not well investigated organisms without already reported relevant SNP information, the ancestral and derived allelic states have to be identified by the user. The ancestral allele is found in a common ancestor of the group of analysed individuals. Thus, it is helpful to conduct sequence alignment to a common ancestor rather than an arbitrarily selected reference genome, e.g. GRCh38 for humans.
 
 
-#### c) Output file(s)
-**Phylogenetic tree**
+#### b) Main Output File: Phylogenetic Tree
 
 SNPtotree generates the phylogenetic tree in a tab-separated file. This tree is to be read from left to right. Downstream variants are located in the diagonal right cell. In this example of variants a to i, variant b, d, e and f are downstream of variant a, and variant c is downstream of variant b.
 Parallel variants (sister clades) are presented in a column: variant a and i are parallel variants.
 Not separable variants are presented in one cell divided by a comma, like variants i and j.
 
-<img src="/Images/output_phyltree.png" alt="Input file style" width="400"/>
+<img src="/Images/output_phyltree.png" alt="Input file style" width="500"/>
+
+#### c) Optional Output Files:
 
 **metadata_individuals**
 
@@ -72,14 +67,29 @@ This output file is optional and can be generated using the following option:
 ```
 This allows to represent the individuals in which the variants of one tree layer were found in. In this example, variant a was found in all individuals 1 to 10, and variant b was only found in individuals 3 and 4. For tree layers with not separable variants (like variants i and j), individuals 11 and 12 were found in at least one of the variants i and j each.
 
-<img src="/Images/output_phyltree_metadata.png" alt="Input file style" width="500"/>
+<img src="/Images/output_phyltree_metadata.png" alt="Input file style" width="600"/>
 
-### 4) Additional information and Contact
+**contradictory_variants**
+
+In certain cases - including sequencing errors, recurrent mutations or backmutations - contradictory pairwise hierarchical relationships are predicted. These variants are ignored for the tree generation, but saved as "contradictory variants". These variants can be saved in a folder, determined using:
+```
+-contradictory_variants /path_to_input_data_folder/ 
+```
+
+**ambiguous_variants**
+Based on the pairwise relationships, the final hierarchical order of the variants is established.
+For some variants, a clear position within the tree is not possible. These variants have ambiguous positions in the tree and can be saved in a folder using:
+```
+-ambiguous_variants /path_to_input_data_folder/
+```
+
+
+### 5) Additional information and Contact
 More information on the software are available in our publication: XX (link)
 
 For reporting bugs, comments or questions, you are welcome to contact zehra.koksal@sund.ku.dk.
 
-### 5) Referencing
+### 6) Referencing
 
 Please cite:
 
