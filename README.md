@@ -31,13 +31,15 @@ python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/
 ```
 optional:
 ```
--contradictory_ variants /path_to_input_data_folder/ 
--ambiguous_ variants /path_to_input_data_folder/
--metadata_ individuals /path_to_input_data_folder/  
+-contradictory_variants /path_to_input_data_folder/ 
+-ambiguous_variants /path_to_input_data_folder/
+-metadata_individuals /path_to_input_data_folder/  
 ```
 #### b) Input file
 The user is required to provide the path to the input file in the _.csv_ format. The input file contains the ancestral **A** or derived **D** allelic state or missing information **X** for each **_polymorphic variant_** in a tab-separated format. The rows present variants, the columns the individuals.
 The header row should present the individuals' labels and the first (index) column the variant names.
+
+<img src="/Images/inputfile_snptotree.png" alt="Your image title" width="100"/>
 
 [[/Images/inputfile_snptotree.png|width=100px]]
 
