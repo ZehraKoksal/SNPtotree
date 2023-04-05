@@ -27,7 +27,7 @@ The software is simple and requires only one input file and creates one main out
 
 #### a) Command
 
-python SNPtotree.py /path_to_input_data.csv/ /path_to_output_folder/ 
+>python SNPtotree.py /path_to_input_data.csv/ /path_to_output_folder/ 
 
 optional:
 -contradictory_ variants /path_to_input_data_folder/ 
