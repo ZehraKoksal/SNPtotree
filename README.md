@@ -65,6 +65,7 @@ This allows to represent the individuals in which the variants of one tree layer
 
 <img src="/Images/output_phyltree_metadata.png" alt="Input file style" width="600"/>
 
+
 **contradictory_variants**
 
 For certain variants - including sequencing errors, recurrent mutations or backmutations - contradictory pairwise hierarchical relationships are predicted. These variants are ignored for the tree generation, but saved as "contradictory variants". These variants can be saved in a folder using:
@@ -72,7 +73,9 @@ For certain variants - including sequencing errors, recurrent mutations or backm
 -contradictory_variants /path_to_input_data_folder/ 
 ```
 
+
 **ambiguous_variants**
+
 Based on the pairwise relationships, the final hierarchical order of the variants is established.
 For some variants, a clear position within the tree could not be determined. These variants have ambiguous positions in the tree and can be saved in a folder using:
 ```
