@@ -16,11 +16,13 @@ SNPtotree allows the creation of phylogenetic trees of variants based on genetic
 Operating system: linux
 
 Type in the shell (linux):
+```
 git clone https://github.com/ZehraKoksal/SNPtotree.git
 
 cd SNPtotree/
 
 SNPtotree.py -h
+```
 
 ### 3) Running SNPtotree
 The software is simple and requires only one input file and creates one main output file, the phylogenetic tree. Three additional output files are optional and give background information on your genetic variants.
