@@ -29,11 +29,14 @@ The software is simple and requires only one input file and creates one main out
 
 python SNPtotree.py /path_to_input_data.csv/ /path_to_output_folder/ 
 
+optional:
 -contradictory_ variants /path_to_input_data_folder/ 
+
 -ambiguous_ variants /path_to_input_data_folder/
+
 -metadata_ individuals /path_to_input_data_folder/  
 
-#### b) Input file
+#### b) Input file (/path_to_input_data.csv/)
 
 #### c) Output file(s)
 
