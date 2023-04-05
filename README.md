@@ -51,7 +51,7 @@ The allelic states "ancestral" and "derived" of the most used model organisms ar
 SNPtotree generates the phylogenetic tree in a tab-separated file. This tree is to be read from left to right. Downstream variants are located in the cells below to the right. In this example variants b, d, e and f are downstream of variant a, and variant c is downstream of variant b.
 Parallel variants (sister clades) within a clade are presented in a column: Variants g and h are parallel to each other. Not separable variants based on the available data are presented in one cell divided by a comma, like variants i and j.
 
-<img src="/Images/output_phyltree.png" alt="Input file style" width="600"/>
+<img src="/Images/output_phyltree.png" alt="Input file style" width="700"/>
 
 #### c) Optional Output Files:
 
@@ -63,7 +63,7 @@ This output file can be generated using the following option:
 ```
 This allows to represent the individuals in which the variants of one tree layer were found in. In this example, variant a was found in all individuals 1 to 10, and variant b was only found in individuals 3 and 4. For tree layers with not separable variants (like variants i and j), individuals 11 and 12 were found in at least one of the variants i and j each.
 
-<img src="/Images/output_phyltree_metadata.png" alt="Input file style" width="600"/>
+<img src="/Images/output_phyltree_metadata.png" alt="Input file style" width="700"/>
 
 
 **contradictory_variants**
