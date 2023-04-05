@@ -41,6 +41,8 @@ python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradict
 The user is required to provide the path to the input file in the _.csv_ format. The input file contains the ancestral **A** or derived **D** allelic state or missing information **X** for each **_polymorphic variant_** in a tab-separated format. The rows present variants, the columns individuals.
 The header row should present the individuals' labels and the first (index) column the variant names.
 
+<img src="/Images/inputfile_snptotree.png" alt="Input file style" width="400"/>
+<img src="/Images/inputfile_snptotree.png" alt="Input file style" width="450"/>
 <img src="/Images/inputfile_snptotree.png" alt="Input file style" width="500"/>
 
 The allelic states "ancestral" and "derived" of the most used model organisms are reported in public repositories. For novel SNPs or for not well investigated organisms without already reported relevant SNP information, the ancestral and derived allelic states have to be identified by the user. The ancestral allele is found in a common ancestor of the group of analysed individuals. Thus, it is helpful to conduct sequence alignments to a common ancestor rather than an arbitrarily selected reference genome, e.g. GRCh38 for humans.
