@@ -41,7 +41,7 @@ python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradict
 The user is required to provide the path to the input file in the _.csv_ format. The input file contains the ancestral **A** or derived **D** allelic state or missing information **X** for each **_polymorphic variant_** in a tab-separated format. The rows present variants, the columns individuals.
 The header row should present the individuals' labels and the first (index) column the variant names.
 
-<img src="/Images/inputfile_snptotree.png" alt="Input file style" width="580"/>
+<img src="/Images/inputfile_snptotree.png" alt="Input file style" width="600"/>
 
 The allelic states "ancestral" and "derived" of the most used model organisms are reported in public repositories. For novel SNPs or for not well investigated organisms without already reported relevant SNP information, the ancestral and derived allelic states have to be identified by the user. The ancestral allele is found in a common ancestor of the group of analysed individuals. Thus, it is helpful to conduct sequence alignments to a common ancestor rather than an arbitrarily selected reference genome, e.g. GRCh38 for humans.
 
@@ -51,7 +51,7 @@ The allelic states "ancestral" and "derived" of the most used model organisms ar
 SNPtotree generates the phylogenetic tree in a tab-separated file. This tree is to be read from left to right. Downstream variants are located in the cells below to the right. In this example variants b, d, e and f are downstream of variant a, and variant c is downstream of variant b.
 Parallel variants (sister clades) within a clade are presented in a column: Variants g and h are parallel to each other. Not separable variants based on the available data are presented in one cell divided by a comma, like variants i and j.
 
-<img src="/Images/output_phyltree.png" alt="Input file style" width="500"/>
+<img src="/Images/output_phyltree.png" alt="Input file style" width="600"/>
 
 #### c) Optional Output Files:
 
