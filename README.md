@@ -15,7 +15,7 @@ SNPtotree allows the creation of phylogenetic trees of variants based on genetic
 ### 2) Installation
 Operating system: linux
 
-Type in the shell (linux):
+Type in the shell:
 ```
 git clone https://github.com/ZehraKoksal/SNPtotree.git
 cd SNPtotree/
@@ -26,7 +26,7 @@ SNPtotree.py -h
 ### 3) Algorithm and Commands
 SNPtotree uses a simple algorithm, which conducts pairwise comparisons of the allelic states of all variants. These are then combined to the final hierarchical tree order.
 
-The required information in the command line are the paths to the _input_ and _main output_ files:
+The required information in the shell are the paths to the _input_ and _main output_ files:
 
 ```
 python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ 
