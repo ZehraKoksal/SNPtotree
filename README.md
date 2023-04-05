@@ -45,8 +45,13 @@ The allelic states "ancestral" and "derived" of the most used model organisms ar
 
 
 #### c) Output file(s)
-SNPtotree generates the phylogenetic tree in a tab-separated file. This tree is to be read from left to right.
-<img src="/Images/output_phyltree.png" alt="Input file style" width="580"/>
+##### Phylogenetic tree
+SNPtotree generates the phylogenetic tree in a tab-separated file. This tree is to be read from left to right. Downstream variants are located in the diagonal right cell. In this example of variants a to i, variant b, d, e and f are downstream of variant a, and variant c is downstream of variant b.
+Parallel variants (sister clades) are presented in a column: variant a and i are parallel variants.
+<img src="/Images/output_phyltree.png" alt="Input file style" width="400"/>
+
+##### metadata_individuals
+XXX
 
 ### 4) Additional information and Contact
 More information on the software are available in our publication: XX (link)
