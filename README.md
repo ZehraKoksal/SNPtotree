@@ -16,7 +16,7 @@ SNPtotree allows the creation of phylogenetic trees of variants based on genetic
 Operating system: linux
 
 Type in the shell (linux):
-```
+```ruby
 git clone https://github.com/ZehraKoksal/SNPtotree.git
 cd SNPtotree/
 SNPtotree.py -h
