@@ -192,7 +192,7 @@ if len(Remove_markers_list) != 0:
         combined.reverse() #needs to be reversed in the order, so the most common markers are in the beginning 
 
    
-if str(args.contradictory_variants) ==str: # != False:
+if type(args.contradictory_variants) ==str: # != False:
     path = args.contradictory_variants + "contradictory_variants.csv"
     to_remove_df = pd.DataFrame()
     to_remove_df[0] = to_remove
