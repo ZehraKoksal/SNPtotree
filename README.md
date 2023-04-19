@@ -1,4 +1,4 @@
-# SNPtotree - A software to resolve the phylogeny of SNPs on non-recombining chromosomes
+# SNPtotree - A software to resolve the phylogeny of SNPs on non-recombining DNA
 
 Zehra Köksal¹, Leonor Gusmão², Claus Børsting¹, Vania Pereira¹
 
@@ -8,7 +8,7 @@ University of Copenhagen, Denmark
 ²DNA Diagnostic Laboratory (LDD), State University of Rio de Janeiro (UERJ), Brazil
 
 ### 1) About SNPtotree
-SNPtotree determines the hierarchical order of biallelic variants on non-recombining chromosomes. Even for sequencing data with high percentage of missing information, SNPtotree reliably generates a phylogenetic tree without error-prone manual sorting. This is unique to SNPtotree, when compared with alternative methods, like maximum likelihood (ML) based approaches.
+SNPtotree determines the hierarchical order of biallelic variants on non-recombining DNA. Even for sequencing data with high percentage of missing information, SNPtotree reliably generates a phylogenetic tree without error-prone manual sorting. This is unique to SNPtotree, when compared with alternative methods, like maximum likelihood (ML) based approaches.
 
 SNPtotree allows the creation of phylogenetic trees of variants based on sequences from very high to very low similarity and amounts of missing data. The algorithm conducts comparisons between the allelic states (ancestral "A" or derived "D") of all variant pairs to infer their relationships and generate a phylogenetic tree. The tree is more accurate and complete, the more accurate and complete the input sequencing data. Variants that predict contradictory pairwise relationships or ambiguous positions in the tree are ignored.
 
