@@ -192,7 +192,7 @@ if len(Remove_markers_list) != 0:
         combined.reverse() #needs to be reversed in the order, so the most common markers are in the beginning 
 
    
-if args.contradictory_variants != False:
+if str(args.contradictory_variants) ==str: # != False:
     path = args.contradictory_variants + "contradictory_variants.csv"
     to_remove_df = pd.DataFrame()
     to_remove_df[0] = to_remove
@@ -462,7 +462,7 @@ for elements in b:
 to_remove_list = list(chain.from_iterable(to_remove_2))
 to_remove_unique = list(set(to_remove_list))
 
-if args.ambiguous_variants != False:
+if type(args.ambiguous_variants) == str: #!= False:
     path = args.ambiguous_variants + "ambiguous_variants.csv"
     to_remove_df = pd.DataFrame()
     to_remove_df[0] = to_remove_unique
@@ -739,7 +739,7 @@ print("Tree was successfully generated in "+str(path)+" !")
 
 
 #METADATA
-if args.metadata_individuals != False:
+if type(args.metadata_individuals) == str: # != False:
     with open(path, "r") as file:
     # with open("/mnt/ngs/scratch_areas/nxd426/1.5_SNPtotree/output5_newTree_Testdata1.txt", "r") as file:
         newText=file.read()
@@ -792,14 +792,12 @@ if args.metadata_individuals != False:
         samples_per_layer = list(set(samples_per_layer))
         marker_grouping_samples.append(samples_per_layer)
 
-
     Result = pd.DataFrame()
     Result["marker"] = marker_grouping
     Result["samples"]=marker_grouping_samples  
     path = args.metadata_individuals + "Variant_individuals_tree.csv"
     np.savetxt(path, Result, delimiter="\t", fmt="%s", comments="")
-
-print("\n"+"The metadata file was successfully generated in "+str(path)+" !")
+    print("\n"+"The metadata file was successfully generated in "+str(path)+" !")
 
 if len(non_poly) > 0:
     print("\n"+"USER MESSAGE: Your input file contained one or more variants that were not polymorphic. For the analysis we removed variant(s): "+str(non_poly_list)+" !")
