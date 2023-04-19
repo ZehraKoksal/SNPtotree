@@ -19,7 +19,7 @@ Type in the shell:
 ```
 git clone https://github.com/ZehraKoksal/SNPtotree.git
 cd SNPtotree/
-SNPtotree.py -h
+python SNPtotree.py -h
 ```
 
 
