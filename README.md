@@ -64,7 +64,7 @@ A metadata output file can be generated using the following option:
 -metadata_individuals /path_to_input_data_folder/  
 ```
 
-In the metadata output file, the individuals presented in each row correspond to the respective row of the phylogenetic tree (tree layer). The variants in each tree layer were observed in the sequences of the respective metadata output row. In this example, variant a was found in all individuals 1 to 10, and variant b was only found in individuals 3 and 4. Variants that could not be separated into different branches were represented in one tree layer (like variants i and j). In this case, the sequences corresponding to this tree layer (individuals 11 and 12) were each found in at least one of the variants (i and j).
+In the metadata output file, the individuals presented in each row correspond to the respective row of the phylogenetic tree (tree layer). The variants in each tree layer were observed in the sequences of the respective metadata output row. In this example, variant a was found in all individuals 1 to 10, and variant b was only found in individuals 2, 3 and 4. Variants that could not be separated into different branches were represented in one tree layer (like variants i and j). In this case, the sequences corresponding to this tree layer (individuals 11 and 12) were each found in at least one of the variants (i and j).
 
 <img src="/Images/output_phyltree_metadata.png" alt="Input file style" width="700"/>
 
