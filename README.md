@@ -33,7 +33,7 @@ The required information in the shell are the paths to the _input_ and _main out
 ```
 python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ 
 ```
-There are three optional output files that are explained below:
+Additionally, there are three optional output files that are explained below:
 ```
 python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradictory_variants /path_to_input_data_folder/ -ambiguous_variants /path_to_input_data_folder/ -metadata_individuals /path_to_input_data_folder/
 ```
