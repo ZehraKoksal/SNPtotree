@@ -71,7 +71,7 @@ In the metadata output file, the individuals presented in each row correspond to
 
 **contradictory_variants**
 
-For certain variants - including those resulting from sequencing errors, recurrent mutations or backmutations - variants with contradictory pairwise hierarchical relationships are ignored for the tree generation, but saved as "contradictory variants". These variants can be saved in a folder using:
+For certain variants - including those resulting from sequencing errors, recurrent mutations or backmutations - variants with contradictory pairwise hierarchical relationships are ignored for the tree generation, but saved as "contradictory variants". These variants can be stored in a folder using:
 ```
 -contradictory_variants /path_to_input_data_folder/ 
 ```
@@ -80,7 +80,7 @@ For certain variants - including those resulting from sequencing errors, recurre
 **ambiguous_variants**
 
 Based on the pairwise relationships, the final hierarchical order of the variants is established.
-For some variants, an explicit position in the tree could not be determined. These variants have ambiguous positions in the tree and can be saved in a folder using:
+For some variants, an explicit position in the tree could not be determined. These variants have ambiguous positions in the tree and can be stored in a folder using:
 ```
 -ambiguous_variants /path_to_input_data_folder/
 ```
