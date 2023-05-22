@@ -85,13 +85,13 @@ For some variants, an explicit position in the tree could not be determined. The
 
 
 ### 4) Additional Information and Contact
-More information on the software are available in our publication: XX (link)
+More information on the software are available in our publication: [Coming soon]
 
 For reporting bugs, comments or questions, you are welcome to contact zehra.koksal@sund.ku.dk.
 
 ### 5) Referencing
 
-Please cite: XX
+Please cite: [Coming soon]
 
 
 
