@@ -8,9 +8,11 @@ University of Copenhagen, Denmark
 ²DNA Diagnostic Laboratory (LDD), State University of Rio de Janeiro (UERJ), Brazil
 
 ### 1) About SNPtotree
-SNPtotree determines the hierarchical order of biallelic variants on non-recombining DNA. Even for sequencing data with high percentage of missing information, SNPtotree reliably generates a phylogenetic tree without error-prone manual sorting. This is unique to SNPtotree, when compared with alternative methods, like maximum likelihood (ML) based approaches.
+SNPtotree determines the hierarchical order of biallelic variants on non-recombining DNA. Even for sequencing data with high percentage of missing information, SNPtotree is able to generate a phylogenetic tree without error-prone manual sorting. This is unique to SNPtotree, when compared with alternative methods, like maximum likelihood (ML) based approaches.
 
 SNPtotree allows the creation of phylogenetic trees of variants based on sequences from very high to very low similarity and amounts of missing data. The algorithm conducts comparisons between the allelic states (ancestral "A" or derived "D") of all variant pairs to infer their relationships and generate a phylogenetic tree. The tree is more accurate and complete, the more accurate and complete the input sequencing data. Variants that predict contradictory pairwise relationships or ambiguous positions in the tree are ignored.
+
+For more in-depth explanations on the algorithms used and information on the tool, please see: [Paper coming soon]
 
 ### 2) Installation
 Operating system: linux
@@ -26,12 +28,12 @@ python SNPtotree.py -h
 ### 3) Algorithm and Commands
 SNPtotree uses a simple algorithm, which conducts pairwise comparisons of the allelic states of all variants. These are then combined to the final hierarchical tree order.
 
-The required information in the shell are the paths to the _input_ and _main output_ files:
+The required information in the shell are the paths to the _input_ and _main output_ files, which are explained below:
 
 ```
 python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ 
 ```
-optional:
+There are three optional output files that are explained below:
 ```
 python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradictory_variants /path_to_input_data_folder/ -ambiguous_variants /path_to_input_data_folder/ -metadata_individuals /path_to_input_data_folder/
 ```
