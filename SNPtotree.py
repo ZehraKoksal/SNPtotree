@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 import pprint
 import re
-from collections import defaultdict 
 import itertools
 from itertools import product, groupby
 from itertools import count
@@ -91,6 +90,7 @@ df_T.columns = header_int
 
 
 Output= []
+Parallel_output = []
 Remove_markers_list = []
 
 #loop through the columns of markers
@@ -155,9 +155,26 @@ for pair in ds_comb:
     elif same_value == {"upstream","downstream","equal"}: #order does not matter
         equal = (str(pair[0])+"&"+ str(pair[1]))
         Output = Output +[equal]
+    #only used to take into account uncertainty
+    elif same_value == {"parallel"}: 
+        parallel = (str(pair[0])+"/"+ str(pair[1]))
+        Parallel_output = Parallel_output +[parallel]
+    ###
     elif len(same_value) == 0:
         rmv = (str(pair[0])+"_"+ str(pair[1]))
         Remove_markers_list = Remove_markers_list + [rmv]
+
+
+Parallel_output = Parallel_output + Output #for statistical power determination --> is continued later on after tree generation
+Pairwise_complete  = pd.DataFrame ()
+Pairwise_complete['relationships'] = Parallel_output
+Pairwise_complete[['M1','M2']] = Pairwise_complete.relationships.str.split("&|-|/", expand=True) 
+
+Pairwise_complete_filter=Pairwise_complete[~Pairwise_complete["relationships"].str.contains("&")]
+
+Pairwise_complete = Pairwise_complete.iloc[:,1:3] #filter to show the last 2 columns
+Pairwise_complete_filter = Pairwise_complete_filter.iloc[:,1:3]
+
 
 print("Pairwise relationships determined!")
 Remove_markers_df = pd.DataFrame()
@@ -202,10 +219,11 @@ print("Contradictory markers removed!")
 #Preparation: Combining equal markers
 
 
+
 #Tree with upstream, downstream markers
 Tree_raw = pd.DataFrame()
 Tree_raw['output'] = Output
-Tree_raw[['parted1','parted2']] = Tree_raw.output.str.split("&|-", expand=True) #update if changing _part2.py script
+Tree_raw[['parted1','parted2']] = Tree_raw.output.str.split("&|-", expand=True) 
 
 #Filtering contradictory markers out
 if len(to_remove) != 0:
@@ -557,7 +575,7 @@ Result=Result[~Result["parted1"].isin(to_remove_3)]
 Result=Result[~Result["parted2"].isin(to_remove_3)]
 
 print("Generate final pairwise marker relationships...")
-#SCRIPT:generate final pairwise markers and newick format of file
+#SCRIPT:generate final pairwise markers and phyloxml format of file
 Result_up = [] #pd.DataFrame() #maybe change to DF afterwards
 Result_down = []
 
@@ -646,6 +664,7 @@ for elements in df_raw[1:]:
 
 #df['delta_xaxis'] = parentheses_cnt[:-1] #Don't save the last entry
 df_final['xaxis'] = location[:-1] 
+tabs_xml = location[1:-1] #Save this for generating phylxml file
 
 
 #move "delta_xaxis" column as first column
@@ -663,13 +682,12 @@ for e in range(max_xaxis):
 df_final = df_final.replace(r"\(","",regex=True)
 df_final = df_final.replace(r"\)","",regex=True)
 
+
 #move deeper located SNPs to the other columns
 cnt=1
 for depth in range(max_xaxis+1):
     for index,row in df_final.iterrows():
         c_name = df_final.columns[depth+1]
-        # print(c_name)
-        # print(ee)
         if row['xaxis'] != depth:
             df_final.at[index,c_name]="" # #np.nan #instead of 1 put name of columns
     cnt = cnt +1
@@ -707,6 +725,7 @@ df_final = df_final.sort_index().reset_index(drop=True)
 #remove x axis column:
 df_final = df_final.iloc[:,1:]
 
+
 #split equal markers in all columns:
 for e in range(column_counter-1):
     df_final.iloc[:,e] = df_final.iloc[:,e].str.split("&")
@@ -728,15 +747,117 @@ for e in range(column_counter-1):
             Rows_final.append('['']')
     Final[e] = Rows_final
 
+
 Final = Final.replace(r"\[","",regex=True)
 Final = Final.replace(r"\]","",regex=True)
 
+#combine all entries in each row into a single entry of the dataframe
+label_variants = Final.apply(lambda row: ''.join(map(str,row)), axis=1)
+label_variants_list = label_variants.tolist()
+coordinate_xml = pd.DataFrame({"1":tabs_xml, "2":label_variants_list[1:]})
+#remove ' and [, ] from variant names
+last_column = coordinate_xml.columns[-1]
+coordinate_xml[last_column] = coordinate_xml[last_column].str.replace("'", "").str.replace("[", "").str.replace("]", "")
+
+
+#create the phylxml file for the tree
+path = args.output + "Output_tree.xml"
+open_clade_counter = 1
+close_clade_counter = 0
+
+with open(path, 'w') as file:
+    file.write('<phyloxml xmlns="http://www.phyloxml.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd">\n<phylogeny rooted="true">\n<clade>\n<color>\n<red>200</red>\n<green>20</green>\n<blue>51</blue>\n</color>')
+    tree_layers = len(coordinate_xml)
+    end_clade = '\n</clade>'
+
+    for i in range(tree_layers):
+        current_variant = coordinate_xml.iloc[i,1]
+        insert_text = '\n<clade>\n<name>'+current_variant+'</name>'
+        current_position = coordinate_xml.iloc[i,0]
+        previous_position = coordinate_xml.iloc[i-1,0]
+        if i == 0:
+            file.write(insert_text)
+            open_clade_counter += 1
+        else:
+            if current_position > previous_position:
+                file.write(insert_text)
+                open_clade_counter += 1
+            if current_position == previous_position:
+                file.write(end_clade)
+                close_clade_counter += 1
+                file.write(insert_text)
+                open_clade_counter += 1
+            if current_position < previous_position:
+                delta = previous_position - current_position + 1
+                for m in range(delta):
+                    file.write(end_clade)
+                    close_clade_counter += 1
+                file.write(insert_text)
+                open_clade_counter += 1
+    end_close_clade = open_clade_counter - close_clade_counter
+    for n in range(end_close_clade):
+        file.write(end_clade)
+    file.write('\n</phylogeny>\n</phyloxml>')
+
+print()
+print("The Phyloxml tree file was successfully generated in "+str(path)+" !")
+
+#CSV file
 path = args.output + "Output_tree.csv"
 np.savetxt(path, Final, delimiter="\t", fmt="%s", comments="")
 print()
-print("Tree was successfully generated in "+str(path)+" !")
+print("The csv tree file was successfully generated in "+str(path)+" !")
+
+##To account for uncertainty Part 2:
+
+#1: how many variants are contained in the final tree:
+if len(to_remove) != 0:
+    Pairwise_complete = Pairwise_complete[~Pairwise_complete['M1'].isin(to_remove) & ~Pairwise_complete['M2'].isin(to_remove)]
+if len(to_remove_unique) != 0:
+    Pairwise_complete = Pairwise_complete[~Pairwise_complete['M1'].isin(to_remove_unique) & ~Pairwise_complete['M2'].isin(to_remove_unique)]
+Pairwise_complete = Pairwise_complete.replace(marker_nr,marker_name) #replace marker number by marker names in dataframe
+# print(Pairwise_complete)
+
+#put all markers of both columns in the dataframe into a list, combine both lists and keep unique entries
+strings_from_column1 = Pairwise_complete["M1"].tolist()
+strings_from_column2 = Pairwise_complete["M2"].tolist()
+all_strings = set(strings_from_column1 + strings_from_column2)
+all_strings = list(all_strings)
+all_strings.remove("Root") #Remove root entry
+all_strings_counter = len(all_strings)-1 #so many pairwise relationships to OTHER variants are possible for each variant
+# print(all_strings_counter)
+#loop through dataframe of all pairwise variants to count how many relationships were reported to other variants
+# print(all_strings)
 
 
+#2: get informative (=downstream,upstream, parallel) pairwise relationships 
+
+if len(to_remove) != 0:
+    Pairwise_complete_filter = Pairwise_complete_filter[~Pairwise_complete_filter['M1'].isin(to_remove) & ~Pairwise_complete_filter['M2'].isin(to_remove)]
+if len(to_remove_unique) != 0:
+    Pairwise_complete_filter = Pairwise_complete_filter[~Pairwise_complete_filter['M1'].isin(to_remove_unique) & ~Pairwise_complete_filter['M2'].isin(to_remove_unique)]
+Pairwise_complete_filter = Pairwise_complete_filter.replace(marker_nr,marker_name) #replace marker number by marker names in dataframe
+Pairwise_complete_filter = Pairwise_complete_filter[~Pairwise_complete_filter['M1'].isin(["Root"])]
+
+# print(Pairwise_complete_filter)
+
+#3: get uncertainty
+certainty = []
+for var in all_strings:
+    filtered_df = Pairwise_complete_filter[(Pairwise_complete_filter['M1'].str.contains(var)) | (Pairwise_complete_filter['M2'].str.contains(var))]
+    current_string_len = len(filtered_df)
+    certainty = certainty + [current_string_len/all_strings_counter]
+
+Result = pd.DataFrame()
+Result["variables"] = all_strings
+Result["certainty values"]=certainty 
+Result.columns = ["variables","certainty values"]
+path = args.output + "certainty_values.csv"
+Result.to_csv(path, index = False, sep="\t")
+# np.savetxt(path, Result, delimiter="\t", fmt="%s", comments="")
+print("\n"+"The certainty values for variants in the phylogenetic tree were successfully generated in "+str(path)+" !")
+
+##
 
 #METADATA
 if type(args.metadata_individuals) == str: # != False:
