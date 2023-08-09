@@ -15,7 +15,7 @@ SNPtotree allows the creation of phylogenetic trees of variants based on sequenc
 For more in-depth explanations on the algorithms used and information on the tool, please see: [Paper submitted]
 
 ### 2) Installation
-Operating system: linux
+Operating system: Linux
 
 Type in the shell:
 ```
@@ -35,7 +35,7 @@ python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/
 ```
 Additionally, there are three optional output files that are explained below:
 ```
-python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradictory_variants /path_to_input_data_folder/ -ambiguous_variants /path_to_input_data_folder/ -metadata_individuals /path_to_input_data_folder/
+python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradictory_variants /path_to_output_data_folder/ -ambiguous_variants /path_to_output_data_folder/ -metadata_individuals /path_to_output_data_folder/
 ```
 
 
@@ -48,14 +48,26 @@ The header row should present the individuals' labels and the first (index) colu
 The allelic states "ancestral" and "derived" of the most used model organisms are reported in public repositories. For novel SNPs or for not well investigated organisms without already reported relevant SNP information, the ancestral and derived allelic states have to be identified by the user. The ancestral allele is found in a common ancestor of the group of analysed individuals. Thus, it is helpful to conduct sequence alignments to a common ancestor rather than an arbitrarily selected reference genome, e.g. GRCh38 for humans.
 
 
-#### b) Main Output File: Phylogenetic Tree
+#### b) Main Output Files: Phylogenetic Tree
 
-SNPtotree generates the phylogenetic tree in a tab-separated file. This tree is to be read from left to right. Downstream variants are located in the cells below and to the right. In this example variants b, d, e and f are downstream of variant a, and variant c is downstream of variant b.
+SNPtotree generates the phylogenetic tree in two file formats: in a tab-separated csv file and a traditional phyloxml file.
+
+The csv output file is to be read from left to right. Downstream variants are located in the cells below and to the right. In this example variants b, d, e and f are downstream of variant a, and variant c is downstream of variant b.
 Variants in parallel branches (sister clades) within a clade are presented in a column: Variants g and h are parallel to each other. Not separable variants based on the available data are presented in one cell divided by a comma, like variants i and j.
 
 <img src="/Images/output_phyltree.png" alt="Input file style" width="700"/>
 
-#### c) Optional Output Files:
+The phyloxml output file contains annotated branches and nodes and can be viewed in phylogenetic tree visualization tools that support phyloxml format, e.g. the interactive Tree Of Life (iTOL). This tree contains the same information as the csv output file.
+
+
+
+#### c) Additional Output File: Certainty Value File
+
+SNPtot
+
+
+
+#### d) Optional Output Files:
 
 **metadata_individuals**
 
