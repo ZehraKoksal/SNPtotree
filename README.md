@@ -59,13 +59,16 @@ Variants in parallel branches (sister clades) within a clade are presented in a 
 
 The phyloxml output file contains annotated branches and nodes and can be viewed in phylogenetic tree visualization tools that support phyloxml format, e.g. the interactive Tree Of Life (iTOL). This tree contains the same information as the csv output file.
 
-<img src="/Images/output_phyloxml.png" alt="Input file style" width="700"/>
+<img src="/Images/output_phyloxml.png" alt="Input file style" width="900"/>
+<img src="/Images/output2_phyloxml.png" alt="Input file style" width="900"/>
 
 #### c) Additional Output File: Certainty Value File
 
-SNPtot
+In a separate csv file, statistical support values for each variant present in the phylogenetic tree are given. The support or certainty values are the fraction of variants in the tree that support that variant's position based on their informative (=upstream/basal/rootward, downstream/terminal, parallel) pairwise relationships out of all remaining variants in the tree.
 
+<img src="/Images/certainty_values_example.png" alt="Input file style" width="700"/>
 
+In this example, the tree location of variant i is supported by informative pairwise relationships of 8 of the remaining 9 variants (8/9 = 0.88888). The ninth variant has no informative pairwise relationship to variant i. Variants with contradictory relationships are not present in the final tree, since they have been filtered out during the tree generation process.
 
 #### d) Optional Output Files:
 
