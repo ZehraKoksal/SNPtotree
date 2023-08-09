@@ -59,7 +59,7 @@ Variants in parallel branches (sister clades) within a clade are presented in a 
 
 The phyloxml output file contains annotated branches and nodes and can be viewed in phylogenetic tree visualization tools that support phyloxml format, e.g. the interactive Tree Of Life (iTOL). This tree contains the same information as the csv output file.
 
-
+<img src="/Images/output_phyloxml.png" alt="Input file style" width="700"/>
 
 #### c) Additional Output File: Certainty Value File
 
