@@ -143,22 +143,21 @@ for pair in ds_comb:
     
     #Combine both comparisons
     same_value = set(Result_list) & set(Result2_list)
-    if same_value == {"upstream"}:
+    #only used to take into account uncertainty
+    if same_value == {"parallel"}: 
+        parallel = (str(pair[0])+"/"+ str(pair[1]))
+        Parallel_output = Parallel_output +[parallel]    
+    elif "parallel" in same_value:
+        speed_up = "speed_up" #to speed up in case of informative 
+    elif same_value == {"upstream"}:
         upstr = (str(pair[0])+"-"+ str(pair[1]))
         Output = Output +[upstr]
     elif same_value == {"downstream"}:
         downstr = (str(pair[1])+"-"+ str(pair[0]))
         Output = Output +[downstr]
-    elif same_value == {"equal"}:
+    elif "equal" in same_value:
         equal = (str(pair[0])+"&"+ str(pair[1]))
         Output = Output +[equal]
-    elif same_value == {"upstream","downstream","equal"}: #order does not matter
-        equal = (str(pair[0])+"&"+ str(pair[1]))
-        Output = Output +[equal]
-    #only used to take into account uncertainty
-    elif same_value == {"parallel"}: 
-        parallel = (str(pair[0])+"/"+ str(pair[1]))
-        Parallel_output = Parallel_output +[parallel]
     ###
     elif len(same_value) == 0:
         rmv = (str(pair[0])+"_"+ str(pair[1]))
@@ -839,23 +838,31 @@ if len(to_remove_unique) != 0:
 Pairwise_complete_filter = Pairwise_complete_filter.replace(marker_nr,marker_name) #replace marker number by marker names in dataframe
 Pairwise_complete_filter = Pairwise_complete_filter[~Pairwise_complete_filter['M1'].isin(["Root"])]
 
-# print(Pairwise_complete_filter)
 
 #3: get uncertainty
 certainty = []
+
+
 for var in all_strings:
-    filtered_df = Pairwise_complete_filter[(Pairwise_complete_filter['M1'].str.contains(var)) | (Pairwise_complete_filter['M2'].str.contains(var))]
+    #when filtering using .str.contains, var needs to be escaped, for cases where it contains +,;; or similar in the string name. Escaping however introduces an error when filtering the columns, when there are other special characters, e.g. for Q1b1a1a1i2~_Z35616
+    # var= re.escape(var)
+    # filtered_df = Pairwise_complete_filter[(Pairwise_complete_filter['M1'].str.contains(var)) | (Pairwise_complete_filter['M2'].str.contains(var))]
+    filtered_df = Pairwise_complete_filter[(Pairwise_complete_filter['M1'] == var) | (Pairwise_complete_filter['M2'] == var)]
     current_string_len = len(filtered_df)
-    certainty = certainty + [current_string_len/all_strings_counter]
+    #get current certainty value
+    current_certainty = current_string_len/all_strings_counter
+    current_certainty_exp = "{:e}".format(current_certainty)
+    certainty = certainty + [current_certainty_exp]
+    
 
 Result = pd.DataFrame()
 Result["variables"] = all_strings
 Result["certainty values"]=certainty 
 Result.columns = ["variables","certainty values"]
-path = args.output + "certainty_values.csv"
-Result.to_csv(path, index = False, sep="\t")
+path_stat = args.output + "certainty_values.csv"
+Result.to_csv(path_stat, index = False, sep="\t")
 # np.savetxt(path, Result, delimiter="\t", fmt="%s", comments="")
-print("\n"+"The certainty values for variants in the phylogenetic tree were successfully generated in "+str(path)+" !")
+print("\n"+"The certainty values for variants in the phylogenetic tree were successfully generated in "+str(path_stat)+" !")
 
 ##
 
@@ -881,6 +888,7 @@ if type(args.metadata_individuals) == str: # != False:
     marker_grouping = []
     df_tree_T = df_tree.T
     col = len(df_tree_T)
+    
 
     #Get marker list in the tree from top to bottom
     for index,row in df_tree.iterrows():
