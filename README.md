@@ -35,7 +35,7 @@ python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/
 ```
 Additionally, there are three optional output files that are explained below:
 ```
-python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ -contradictory_variants /path_to_output_data_folder/ -ambiguous_variants /path_to_output_data_folder/ -metadata_individuals /path_to_output_data_folder/
+python SNPtotree.py path_to_input_file.csv/ path_to_output_folder/ -contradictory_variants -ambiguous_variants -metadata_individuals
 ```
 
 
@@ -76,7 +76,7 @@ In this example, the tree location of variant i is supported by informative pair
 
 A metadata output file can be generated using the following option:
 ```
--metadata_individuals /path_to_input_data_folder/  
+-metadata_individuals 
 ```
 
 In the metadata output file, the individuals presented in each row correspond to the respective row of the phylogenetic tree (tree layer). The variants in each tree layer were observed in the sequences of the respective metadata output row. In this example, variant a was found in all individuals 1 to 10, and variant b was only found in individuals 2, 3 and 4. Variants that could not be separated into different branches were represented in one tree layer (like variants i and j). In this case, the sequences corresponding to this tree layer (individuals 11 and 12) were each found in at least one of the variants (i and j).
@@ -88,7 +88,7 @@ In the metadata output file, the individuals presented in each row correspond to
 
 For certain variants - including those resulting from sequencing errors, recurrent mutations or backmutations - variants with contradictory pairwise hierarchical relationships are ignored for the tree generation, but saved as "contradictory variants". These variants can be stored in a folder using:
 ```
--contradictory_variants /path_to_input_data_folder/ 
+-contradictory_variants
 ```
 
 
@@ -97,7 +97,7 @@ For certain variants - including those resulting from sequencing errors, recurre
 Based on the pairwise relationships, the final hierarchical order of the variants is established.
 For some variants, an explicit position in the tree could not be determined. These variants have ambiguous positions in the tree and can be stored in a folder using:
 ```
--ambiguous_variants /path_to_input_data_folder/
+-ambiguous_variants
 ```
 
 
