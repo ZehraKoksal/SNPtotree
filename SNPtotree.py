@@ -208,21 +208,15 @@ if len(Remove_markers_list) != 0:
         combined.reverse() #needs to be reversed in the order, so the most common markers are in the beginning 
 
    
-<<<<<<< HEAD
 
 if args.contradictory_variants:
     path = args.output + "contradictory_variants.csv"
-=======
-if type(args.contradictory_variants) ==str: # != False:
-    path = args.contradictory_variants + "contradictory_variants.csv"
->>>>>>> b36a4c3f45f06f30125b0c39c479333dc2f3cab7
     to_remove_df = pd.DataFrame()
     to_remove_df[0] = to_remove
     to_remove_df[0] = to_remove_df[0].replace(marker_nr,marker_name)
     np.savetxt(path, to_remove_df, delimiter=",", fmt="%s", comments="")
 print("Contradictory markers removed!")
 #Preparation: Combining equal markers
-
 
 
 #Tree with upstream, downstream markers
@@ -485,13 +479,8 @@ for elements in b:
 to_remove_list = list(chain.from_iterable(to_remove_2))
 to_remove_unique = list(set(to_remove_list))
 
-<<<<<<< HEAD
 if args.ambiguous_variants:
     path = args.output + "ambiguous_variants.csv"
-=======
-if type(args.ambiguous_variants) == str: #!= False:
-    path = args.ambiguous_variants + "ambiguous_variants.csv"
->>>>>>> b36a4c3f45f06f30125b0c39c479333dc2f3cab7
     to_remove_df = pd.DataFrame()
     to_remove_df[0] = to_remove_unique
     to_remove_df[0] = to_remove_df[0].replace(marker_nr,marker_name)
@@ -878,11 +867,7 @@ print("\n"+"The certainty values for variants in the phylogenetic tree were succ
 ##
 
 #METADATA
-<<<<<<< HEAD
 if args.metadata_individuals:
-=======
-if type(args.metadata_individuals) == str: # != False:
->>>>>>> b36a4c3f45f06f30125b0c39c479333dc2f3cab7
     with open(path, "r") as file:
     # with open("/mnt/ngs/scratch_areas/nxd426/1.5_SNPtotree/output5_newTree_Testdata1.txt", "r") as file:
         newText=file.read()
