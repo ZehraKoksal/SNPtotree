@@ -31,7 +31,7 @@ SNPtotree uses a simple algorithm, which conducts pairwise comparisons of the al
 The required information in the shell are the paths to the _input_ and _main output_ files, which are explained below:
 
 ```
-python SNPtotree.py /path_to_input_file.csv/ /path_to_output_folder/ 
+python SNPtotree.py path_to_input_file.csv/ path_to_output_folder/ 
 ```
 Additionally, there are three optional output files that are explained below:
 ```
