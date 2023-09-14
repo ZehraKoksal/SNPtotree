@@ -22,7 +22,6 @@ parser.add_argument("input", help="Tab-delimited csv file of a dataframe with in
   "Insert variant data as 'A' for ancestral, 'D' for derived allele, and 'X' for missing data. Add variant names as first column and sequence name as header row. "
   "Include only polymorphic variants! Refrain from using comma separted marker or sequence names.")
 parser.add_argument("output", help="Path to output folder")
-# parser.add_argument("newick_output", help="Path to newick output folder")
 parser.add_argument("-contradictory_variants", action="store_true", help="Optional: print contradictory variants based on pairwise comparisons in case contradictory variants exist for dataset. ")
 parser.add_argument("-ambiguous_variants", action="store_true", help="Optional: print removed variants due to their ambiguous positions in the tree. More informative sequencing information could help find the correct tree position of these variants. ")
 parser.add_argument("-metadata_individuals", action="store_true", help="Optional: print which individuals showed derived alleles for the variants in each tree row. For a set of multiple equal variants, the sequences of this row were derived for at least one of the variants. ")
