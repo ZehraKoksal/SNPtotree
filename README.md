@@ -12,7 +12,7 @@ SNPtotree determines the hierarchical order of biallelic variants on non-recombi
 
 SNPtotree allows the creation of phylogenetic trees of variants based on sequences from very high to very low similarity and amounts of missing data. The algorithm conducts comparisons between the allelic states (ancestral "A" or derived "D") of all variant pairs to infer their relationships and generate a phylogenetic tree. The tree is more accurate and complete, the more accurate and complete the input sequencing data. Variants that predict contradictory pairwise relationships or ambiguous positions in the tree are ignored.
 
-For more in-depth explanations on the algorithms used and information on the tool, please see: [Paper submitted]
+For more in-depth explanations on the algorithms used and information on the tool, please see: [[Click here!](https://www.mdpi.com/2073-4425/14/10/1837)
 
 ### 2) Installation
 Operating system: Linux
