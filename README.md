@@ -14,6 +14,8 @@ SNPtotree allows the creation of phylogenetic trees of variants based on sequenc
 
 For more in-depth explanations on the algorithms used and information on the tool, please see: <a href="https://www.mdpi.com/2073-4425/14/10/1837" target="_blank">Click here!</a>
 
+[Click here!](https://www.mdpi.com/2073-4425/14/10/1837){:target="_blank"}
+
 ### 2) Installation
 Operating system: Linux
 
