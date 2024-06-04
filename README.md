@@ -98,7 +98,9 @@ For reporting bugs, comments or questions, you are welcome to contact zehra.koks
 
 ### 5) Referencing
 
-Please cite: [Paper submitted]
+Please cite: 
+Köksal, Z.; Børsting, C.; Gusmão, L.; Pereira, V. SNPtotree—Resolving the Phylogeny of SNPs on Non-Recombining DNA. Genes 2023, 14, 1837. https://doi.org/10.3390/genes14101837
+
 
 
 
